@@ -1,7 +1,7 @@
 {
   "name": "morpheus",
   "productName": "Morpheus",
-  "version": "0.1.0",
+  "version": "0.0.7",
   "description": "Morpheus is private, sovereign, AI",
   "main": ".webpack/main",
   "scripts": {
@@ -9,8 +9,8 @@
     "package": "set DEBUG=electron-packager && electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "publish-github-minor": "yarn version minor && git push --follow-tags",
-    "publish-github-major": "yarn version major && git push --follow-tags",
+    "publish-github-minor": "yarn version --minor && git push --follow-tags",
+    "publish-github-major": "yarn version --major && git push --follow-tags",
     "lint": "eslint --ext .ts,.tsx .",
     "pretty": "npx prettier src/**/*.{js,jsx,ts,tsx,json,css} --write"
   },

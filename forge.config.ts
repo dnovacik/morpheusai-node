@@ -6,6 +6,7 @@ import { MakerRpm } from '@electron-forge/maker-rpm';
 import { MakerDMG } from '@electron-forge/maker-dmg';
 import { AutoUnpackNativesPlugin } from '@electron-forge/plugin-auto-unpack-natives';
 import { WebpackPlugin } from '@electron-forge/plugin-webpack';
+import { PublisherGithub } from '@electron-forge/publisher-github';
 import fs from 'fs';
 import path from 'path';
 import { exec } from 'child_process';
@@ -19,12 +20,7 @@ const config: ForgeConfig = {
     name: 'morpheus',
     extraResource: ['./src/executables/'],
     icon: 'src/frontend/assets/images/circle-mor-logo.ico',
-    osxSign: {
-      identity: process.env.APPLE_DEVELOPER_ID,
-      hardenedRuntime: true,
-      entitlements: 'entitlements.plist',
-      'entitlements-inherit': 'entitlements.plist',
-    },
+    osxSign: {},
   },
   hooks: {
     postPackage: async (_, { platform, outputPaths }) => {
@@ -62,7 +58,6 @@ const config: ForgeConfig = {
     new MakerDeb({}),
     new MakerDMG({
       name: 'morpheus',
-
       background: 'src/assets/dmg-background.png',
       format: 'ULFO',
       icon: 'src/assets/src/frontend/assets/images/MOR_logo-sq.icnslogo_white.png',
@@ -83,6 +78,15 @@ const config: ForgeConfig = {
       ],
 //      identity: process.env.APPLE_DEVELOPER_ID,
     }),
+  ],
+  publishers: [
+    new PublisherGithub({
+      repository: {
+        owner: 'dnovacik',
+        name: 'morpheusai-node'
+      },
+      draft: true
+    })
   ],
   plugins: [
     new AutoUnpackNativesPlugin({}),

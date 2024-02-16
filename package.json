@@ -1,7 +1,7 @@
 {
   "name": "morpheus",
   "productName": "Morpheus",
-  "version": "0.0.7",
+  "version": "0.0.6",
   "description": "Morpheus is private, sovereign, AI",
   "main": ".webpack/main",
   "scripts": {
@@ -48,6 +48,7 @@
     "@electron-forge/maker-zip": "^7.2.0",
     "@electron-forge/plugin-auto-unpack-natives": "^7.2.0",
     "@electron-forge/plugin-webpack": "^7.2.0",
+    "@electron-forge/publisher-github": "^7.2.0",
     "@svgr/webpack": "^8.1.0",
     "@types/ajv": "^1.0.0",
     "@types/qrcode": "^1.5.5",

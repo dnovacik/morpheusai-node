@@ -31,7 +31,7 @@ const config: ForgeConfig = {
             ? 'ollama.exe'
             : 'ollama-linux';
 
-      const outputResourceFolder = `${outputPaths[0]}${platform === 'darwin' ? '/mor-submod.app/Contents' : ''}/resources/executables/`;
+      const outputResourceFolder = `${outputPaths[0]}${platform === 'darwin' ? '/morpheus.app/Contents' : ''}/resources/executables/`;
 
       fs.readdir(outputResourceFolder, (err, files) => {
         if (err) {
@@ -56,28 +56,29 @@ const config: ForgeConfig = {
     new MakerZIP({}, ['darwin']),
     new MakerRpm({}),
     new MakerDeb({}),
-    new MakerDMG({
-      name: 'morpheus',
-      background: 'src/assets/dmg-background.png',
-      format: 'ULFO',
-      icon: 'src/assets/src/frontend/assets/images/MOR_logo-sq.icnslogo_white.png',
-      overwrite: true,
-      contents: [
-        {
-          x: 410,
-          y: 220,
-          type: 'link',
-          path: '/Applications',
-        },
-        {
-          x: 130,
-          y: 220,
-          type: 'file',
-          path: '/path/to/file',
-        },
-      ],
-//      identity: process.env.APPLE_DEVELOPER_ID,
-    }),
+    new MakerDMG({}),
+//     new MakerDMG({
+//       name: 'morpheus',
+//       // background: 'src/assets/dmg-background.png',
+//       format: 'ULFO',
+//       icon: 'src/assets/src/frontend/assets/images/MOR_logo-sq.icnslogo_white.png',
+//       overwrite: true,
+//       // contents: [
+//       //   {
+//       //     x: 410,
+//       //     y: 220,
+//       //     type: 'link',
+//       //     path: '/Applications',
+//       //   },
+//       //   {
+//       //     x: 130,
+//       //     y: 220,
+//       //     type: 'file',
+//       //     path: '/path/to/file',
+//       //   },
+//       // ],
+// //      identity: process.env.APPLE_DEVELOPER_ID,
+//     }),
   ],
   publishers: [
     new PublisherGithub({

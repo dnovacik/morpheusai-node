@@ -1,23 +1,34 @@
-MORPHEUS NODE
+# MORPHEUS NODE
 
-First, clone this repo.
+## Setup & Installation
 
+Clone the repo and in the root run:
+- `yarn` - to install packages and setup, this should take care of everything needed to be able to run locally
 
-Then, start yarn.
+## Local Development
 
-`yarn`
+To start the local development node, run:
+- `yarn start`
 
-This will set up all node modules needed.
+## Packaging and making distributable format
 
-If you want to test the app without building an executable:
+### Platform specific bundle
 
-`yarn start`
+To create a platform-specific executable bundle, run:
+- `yarn run package` - this will create a package for local platform
 
-To build an executable to run on your current system's specs:
+To create a package for a different platform, run:
+- `yarn run package --platform={desiredPlatform}` where desiredPlatform: `darwin`, `win` or `linux`
 
-`yarn make`
+or different architecture:
+- `yarn run package --arch={desiredArch}` where desiredArch: `ia32`, `x64`, `armv7l`, `arm64`, `universal` or `mips64el`
 
-Other run, test, and build scripts can be found in the package.json
+### Proper distributable format
+
+To create a proper platform distributable, run:
+- `yarn run make` - this will create a distributable for local platform
+
+For different platforms, use the same parameters as in the Platform specific bundle
 
 Please visit MOR.software to sign up as a developer to be rewarded for your merged contributions.  Submit an MRC to get support for feature and improvement ideas.
 
